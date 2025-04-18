@@ -1,0 +1,24 @@
+<table mat-table [dataSource]="audioTracks" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let track" > {{ track.name }}  </td>
+
+  </ng-container>
+
+  <ng-container matColumnDef="fileName">
+    <th mat-header-cell *matHeaderCellDef> File Name </th>
+    <td mat-cell *matCellDef="let track"> {{ track.fileName }} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelectTrack(row)"></tr>
+
+
+</table>
+
+
+<div *ngIf="selectedTrack">
+  <app-audio-player [track]="selectedTrack"></app-audio-player>
+</div>
